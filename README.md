@@ -1,1 +1,1 @@
-Example Project of professional game dev example for the Course "Desarrollo de Videojuegos" en la Universidad Continental.
+Example of professional game dev project for the Course "Desarrollo de Videojuegos" at the Continental Universidad.
