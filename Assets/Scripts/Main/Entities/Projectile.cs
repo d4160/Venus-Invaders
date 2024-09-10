@@ -1,16 +1,20 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private float _damage;
+
+    private Rigidbody2D _rb;
+
+    void Awake()
     {
-        
+        _rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Init(float damage, float velocity)
     {
-        
+        _damage = damage;
+        _rb.linearVelocity = transform.right * velocity;
     }
 }
