@@ -3,13 +3,20 @@ using UnityEngine;
 /// <summary>
 /// https://docs.unity3d.com/Manual/ExecutionOrder.html
 /// </summary>
+
 public class B_UnityLifecycleLogger : MonoBehaviour
 {
+    public float speed = 2;
+    public float detectionRayLength = 1.5f;
+
+    private Rigidbody2D _rb2D;
+
     #region Script Lifecycle
     void Awake()
     {
         // Se llama cuando el script de la instancia se está cargando.
         Debug.Log(gameObject.name + " - Awake");
+        _rb2D = GetComponent<Rigidbody2D>();
     }
 
     void OnEnable()
@@ -34,6 +41,8 @@ public class B_UnityLifecycleLogger : MonoBehaviour
     {
         // Se llama una vez por frame, después de todas las actualizaciones.
         Debug.Log(gameObject.name + " - LateUpdate");
+
+
     }
 
     void OnDisable()
@@ -54,6 +63,13 @@ public class B_UnityLifecycleLogger : MonoBehaviour
     {
         // Se llama en intervalos de tiempo fijos, ideal para la física.
         Debug.Log(gameObject.name + " - FixedUpdate");
+
+        _rb2D.linearVelocity = Vector2.down * speed;
+
+        if (Physics2D.Raycast(transform.position, Vector2.down))
+        {
+            _rb2D.linearVelocity += Vector2.right * 2f;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -237,6 +253,8 @@ public class B_UnityLifecycleLogger : MonoBehaviour
     {
         // Se llama para dibujar gizmos que se pueden ver en la vista de escena.
         Debug.Log(gameObject.name + " - OnDrawGizmos");
+
+        Debug.DrawLine(transform.position, transform.position + Vector3.down * detectionRayLength);
     }
 
     void OnDrawGizmosSelected()

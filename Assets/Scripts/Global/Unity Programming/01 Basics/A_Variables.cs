@@ -182,6 +182,7 @@ namespace Global.UnityProgramming.Basics
         }
 
         // Declaración del struct (Tipo de Valor)
+        [System.Serializable]
         public struct Point
         {
             public int x; // 4 bytes
@@ -189,6 +190,7 @@ namespace Global.UnityProgramming.Basics
         }
 
         // Declaración del class (Tipo de Referencia)
+        [System.Serializable]
         public class Person
         {
             public string name; // tamaño variable, 2 bytes por carácter
