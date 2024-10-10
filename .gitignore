@@ -16,6 +16,9 @@
 /BuildReports/
 /UMotionData/
 
+/Assets/_lfs/
+/Assets/_lfs.meta
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
